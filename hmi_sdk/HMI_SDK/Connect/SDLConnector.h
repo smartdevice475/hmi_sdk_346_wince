@@ -9,7 +9,6 @@
 #include "Connect/UI.h"
 #include "Connect/VehicleInfo.h"
 #include "Connect/VR.h"
-#include "Connect/CVideoStream.h"
 #include "Connect/SocketsToSDL.h"
 #include <string>
 #include "json/json.h"
@@ -49,7 +48,6 @@ private:
     TTS m_TTS;
     VehicleInfo m_Vehicle;
     UI m_UI;
-    CVideoStream m_VideoStream;
 
     INetworkStatus * m_pNetwork;
     IMessageInterface * m_pMsgHandler;

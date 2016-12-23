@@ -14,7 +14,7 @@
 #endif
 #include <QDir>
 #ifdef SDL_SUPPORT_LIB
-#include "main.h"
+//#include "main.h"
 //#include "AudioTrans/MspVRAudio.h"
 #endif
 
