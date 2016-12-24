@@ -489,7 +489,6 @@ void SDLConnector::OnVideoScreenTouch(TOUCH_TYPE touch,int x,int y)
 
      switch(touch) {
      case TOUCH_START:
-         id++;
          params["type"] = "BEGIN";
          event[0]["id"] = id;
          break;

@@ -11,7 +11,7 @@
 //#include "UI/Slider/Slider.h"
 //#include "UI/Notify/Notify.h"
 //#include "UI/Common/AppBase.h"
-//#include "UI/TextSpeech/textspeech.h"
+//#include "TextSpeech/textspeech.h"
 #include "UIInterface.h"
 #include "AppListInterface.h"
 #include "QMessageBox"

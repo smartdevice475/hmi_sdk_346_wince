@@ -7,6 +7,7 @@
 QT       += widgets
 #QT += network
 #greaterThan(QT_MAJOR_VERSION, 4): QT +=multimedia
+win32:QT += axcontainer
 
 TARGET = Gen3UI
 TEMPLATE = lib
