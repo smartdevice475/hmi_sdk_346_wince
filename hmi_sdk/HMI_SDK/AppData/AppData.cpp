@@ -256,7 +256,7 @@ void AppData::OnVRCancelRecord()
 
 void AppData::OnSoftButtonClick(int sbID, int mode,std::string strName)
 {
-    ToSDL->OnSoftButtonClick(sbID, mode,strName);
+    ToSDL->OnSoftButtonClick(sbID, mode, m_iAppID, strName);
 }
 
 void AppData::OnCommandClick(int cmdID)

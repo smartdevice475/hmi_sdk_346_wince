@@ -154,33 +154,45 @@ void SDLConnector::OnAppActivated(int appID)
     m_Base.sendRequest(m_Base.GenerateId(),"SDL.ActivateApp", params);
 }
 
-void SDLConnector::OnSoftButtonClick(int id, int mode,std::string strName)
+void SDLConnector::OnSoftButtonClick(int id, int mode, int app_id, std::string strName)
 {
     if (!strName.empty()) {
-        _onButtonClickAction(strName, "BUTTONDOWN", id);
-        _onButtonClickAction(strName, "BUTTONUP", id);
+        _onButtonClickAction(strName, "BUTTONDOWN", id, app_id);
+        _onButtonClickAction(strName, "BUTTONUP", id, app_id);
         if (mode == BUTTON_SHORT)
-            _onButtonClickAction(strName, "SHORT", id);
+            OnButtonPress(strName, "SHORT", id, app_id);
         else
-            _onButtonClickAction(strName, "LONG", id);
+            OnButtonPress(strName, "LONG", id, app_id);
     } else {
-        _onButtonClickAction("CUSTOM_BUTTON", "BUTTONDOWN", id);
-        _onButtonClickAction("CUSTOM_BUTTON", "BUTTONUP", id);
+        _onButtonClickAction("CUSTOM_BUTTON", "BUTTONDOWN", id, app_id);
+        _onButtonClickAction("CUSTOM_BUTTON", "BUTTONUP", id, app_id);
         if (mode == BUTTON_SHORT)
-            _onButtonClickAction("CUSTOM_BUTTON", "SHORT", id);
+            OnButtonPress("CUSTOM_BUTTON", "SHORT", id, app_id);
         else
-            _onButtonClickAction("CUSTOM_BUTTON", "LONG", id);
+            OnButtonPress("CUSTOM_BUTTON", "LONG", id, app_id);
     }
 }
 
-void SDLConnector::_onButtonClickAction(std::string name, std::string mode, int customButtonID)
+void SDLConnector::_onButtonClickAction(std::string name, std::string mode, int customButtonID, int app_id)
 {
-    Json::Value params;
-    params["name"] = name;
-    params["mode"] = mode;
-    params["customButtonID"] = customButtonID;
+  Json::Value params;
+  params["name"] = name;
+  params["mode"] = mode;
+  params["customButtonID"] = customButtonID;
+  params["appID"] = app_id;
 
 	m_Buttons.sendNotification("Buttons.OnButtonEvent", params);
+}
+
+void SDLConnector::OnButtonPress(std::string name, std::string mode,
+                                 int customButtonID,int app_id) {
+  Json::Value params;
+  params["name"] = name;
+  params["mode"] = mode;
+  params["customButtonID"] = customButtonID;
+  params["appID"] = app_id;
+
+  m_Buttons.sendNotification("Buttons.OnButtonPress", params);
 }
 
 void SDLConnector::OnAppExit(int appID)

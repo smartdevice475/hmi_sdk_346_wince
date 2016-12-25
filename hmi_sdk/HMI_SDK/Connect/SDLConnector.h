@@ -65,7 +65,7 @@ public:
     void OnAppOut(int appID);
 
     // mode: SHORT or LONG
-    void OnSoftButtonClick(int id, int mode,std::string strName = "");
+    void OnSoftButtonClick(int id, int mode, int app_id, std::string strName = "");
 
     // mode: SHORT or LONG
     void OnButtonClick(std::string buttonname, int mode);
@@ -109,7 +109,10 @@ public:
     void OnFindApplications(std::string name, std::string id);
 
 private:
-    void _onButtonClickAction(std::string, std::string, int);
+    void _onButtonClickAction(std::string name, std::string mode,
+                              int customButtonID, int app_id);
+    void OnButtonPress(std::string name, std::string mode,int customButtonID,
+                       int app_id);
     void _stopPerformAudioPassThru(int);
     void _buttonEventDown(std::string buttonname);
     void _buttonPressed(std::string buttonname, int mode);
